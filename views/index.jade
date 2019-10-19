@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title 办公室设备盘点
+    link(rel="stylesheet", type="text/css", href="/stylesheets/css/H-ui.min.css")
+    link(rel="stylesheet", type="text/css", href="/stylesheets/css/H-ui.admin.css")
+    link(rel="stylesheet", type="text/css", href="/stylesheets/css/iconfont.min.css")
+    link#skin(rel="stylesheet", type="text/css", href="/stylesheets/css/skin/skin.css")
+    body
+      header.navbar-wrapper
+        .navbar.navbar-fixed-top
+          .container-fluid.cl
+            span.logo.navbar-slogan.f-l.mr-10.hidden-xs v1.0
+      aside.Hui-aside
+        div.menu_dropdown.bk_2
+          dl
+            dt
+              i.Hui-iconfont &#xe6c6;&nbsp;设备盘点清单
+              i.Hui-iconfont.menu_dropdown-arrow &#xe6d5;
+            dd
+              ul
+                li(style="font-size:14px")
+                   a(data-href='/users/computer',data-title="笔记本电脑",href="javascript:void(0)")
+                     i.Hui-iconfont &#xe64f;&nbsp;笔记本电脑/打印机
+      section.Hui-article-box
+        #Hui-tabNav.Hui-tabNav.hidden-xs
+          .Hui-tabNav-wp
+            ul#min_title_list.acrossTab.cl
+              li.active
+                span(title="我的首页", data-href="/users/computer") 首页
+                em
+          .Hui-tabNav-more.btn-group
+            a#js-tabNav-prev.btn.radius.btn-default.size-S(href="javascript:;")
+              i.Hui-iconfont &#xe6d4;
+            a#js-tabNav-next.btn.radius.btn-default.size-S(href="javascript:;")
+              i.Hui-iconfont &#xe6d7;
+        #iframe_box.Hui-article
+          .show_iframe
+            .loading(style="display:none")
+            iframe(scrolling="yes", frameborder="0", src="/users/computer")
+      #Huiadminmenu.contextMenu
+        ul
+          li#closethis 关闭当前
+          li#closeall 关闭全部
+      // _footer 作为公共模版分离出去
+      include _footer
+        // 请在下方写此页面业务相关的脚本
+

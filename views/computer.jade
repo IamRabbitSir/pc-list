@@ -1,0 +1,148 @@
+include _meta
+body
+    nav.breadcrumb
+        i.Hui-iconfont 
+        |  设备盘点清单
+        span.c-gray.en >&nbsp; 笔记本电脑
+
+        a.btn.btn-success.radius.r(style="line-height:1.6em;margin-top:3px", href="javascript:location.replace(location.href);", title="刷新")
+            i.Hui-iconfont 
+    .page-container
+        .cl.pd-5.bg-1.bk-gray
+            span.l
+                a.btn.btn-primary.radius(href="javascript:;", onclick="pc_add('添加','/users/addComputer','500','580')")
+                    i.Hui-iconfont 
+                    |  添加
+                | &nbsp;
+                a.btn.btn-primary.radius(href="javascript:;", onclick="pc_edit('编辑','/users/editComputer','500','580')")
+                    i.Hui-iconfont 
+                    |  编辑
+                | &nbsp;
+                a.btn.btn-danger.radius(href="javascript:;", onclick="pc_del(this)")
+                    i.Hui-iconfont 
+                    |  删除
+                | &nbsp;
+               a.btn.btn-danger.radius(href="javascript:;", onclick="excelTo()")
+                    i.Hui-iconfont 
+                    |  导出EXCEL
+        table#table.table.table-border.table-bordered.table-hover.table-bg.table-sort
+            thead
+                tr
+                    th(scope="col", colspan="9")
+                    =设备盘点清单
+                tr.text-c
+                    th
+                    th ID
+                    th 设备名称
+                    th 型号
+                    th SNID
+                    th CPU
+                    th 内存
+                    th 硬盘
+                    th 部门
+                    th 姓名
+                    th 所属
+                    th 备注
+    // _footer 作为公共模版分离出去
+    include _footer
+    // 请在下方写此页面业务相关的脚本
+    script(type="text/javascript", src="/javascripts/lib/datatables/1.10.0/jquery.dataTables.min.js")
+    script(type="text/javascript").
+        window.table = $('#table').DataTable({
+            "ajax": "/users/getComputer",
+            "deferRender": true, //延迟渲染
+            "columns": [
+                {
+                    "class": 'details-control',
+                    "orderable": false,
+                    "defaultContent": "<input name='pc' type='radio' value=''/>"
+                },
+                {"data": "id"},
+                {"data": "name"},
+                {"data": "type"},
+                {"data": "SNID"},
+                {"data": "CPU"},
+                {"data": "RAM"},
+                {"data": "ROM"},
+                {"data": "dept"},
+                {"data": "username"},
+                {"data": "belong"},
+                {"data": "bz"}
+
+            ],
+            "lengthMenu": [[15, 30], [15, 30]],
+            "order": [[1, 'desc']]
+        });
+        // Add event listener for opening and closing details
+
+        /*管理员-角色-添加*/
+        function pc_add(title,url,w,h){
+            console.log('点击按钮')
+            layer_show(title,url,w,h);
+            //table.ajax.reload();
+        }
+        /*管理员-角色-编辑*/
+        function pc_edit(title, url, w, h) {
+            var n = $("input[name='pc']").length;
+            var a = 0;
+            var url = url;
+            var row = $('input:radio[name="pc"]:checked').parents('tr')[0];
+            //行数据
+            var id = table.row(row).data().id;
+            var newUrl = url + "?id=" + id;
+            for (var i = 0; i < n; i++) {
+                if ($("input[name='pc']")[i].checked == true) {
+                    a++;
+                }
+            }
+            if (a > 0) {
+                layer_show(title, newUrl, w, h);
+            } else {
+                layer.confirm('请先选择！');
+            }
+        }
+        /*管理员-角色-删除*/
+        function pc_del(obj){
+            var n = $("input[name='pc']").length;
+            var a = 0;
+            var lock = false; //默认未锁定
+            for (var i = 0; i < n; i++) {
+                if ($("input[name='pc']")[i].checked == true) {
+                    a++;
+                }
+            }
+            if (a > 0) {
+                var row = $('input:radio[name="pc"]:checked').parents('tr')[0];
+                //行数据
+                var id = table.row(row).data().id;
+                layer.confirm('删除须谨慎，确认要删除吗？', function (index) {
+                    if(!lock) {//防止重复提交
+                        lock = true; //锁定
+                        $.ajax({
+                            type: 'POST',
+                            url: '/users/delPc',
+                            data: {id: id},
+                            dataType: 'json',
+                            success: function (data) {
+                                $(obj).parents("tr").remove();
+                                layer.msg('已删除!', {icon: 1, time: 1000});
+                                window.location.reload();
+                            },
+                            error: function (data) {
+                                console.log(data.msg);
+                            },
+                        });
+                    }
+                });
+            } else {
+                layer.confirm('请先选择！');
+            }
+        }
+        //点击某一行，选中单选框
+        function rowClick(obj) {
+            $(obj).find(":radio").prop("checked",true);
+        }
+        //导出excel
+        function excelTo(URL) {
+            window.location = "users/exportExcel";
+        }

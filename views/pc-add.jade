@@ -1,0 +1,85 @@
+include _meta
+body
+    article.page-container(style="")
+        form#form-edit.form.form-horizontal(action="/users/addPc", method="post")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3
+                    span.c-red *
+                    |设备名称：
+                .formControls.col-xs-8.col-sm-9
+                    input#roleName.input-text(type="text", value="", placeholder="", name="name")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  型号：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="type")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  SNID：
+                .formControls.col-xs-8.col-sm-9
+                        input.input-text(type="text", value="", placeholder="", name="SNID")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  CPU：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="CPU")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  内存：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="RAM")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  硬盘：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="ROM")
+                    input(type="hidden",value="")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3 *部门：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="dept")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  姓名：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="username")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  所属：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="belong")
+            .row.cl
+                label.form-label.col-xs-4.col-sm-3  备注：
+                .formControls.col-xs-8.col-sm-9
+                    input.input-text(type="text", value="", placeholder="", name="bz")
+            .row.cl
+                .col-xs-8.col-sm-9.col-xs-offset-4.col-sm-offset-3
+                    button#admin-role-save.btn.btn-success.radius(type="submit", name="admin-role-save")
+                        i.icon-ok
+                        |  确定
+    include _footer
+    script(type="text/javascript", src="/javascripts/lib/jquery.validation/1.14.0/jquery.validate.js")
+    script(type="text/javascript", src="/javascripts/lib/jquery.validation/1.14.0/validate-methods.js")
+    script(type="text/javascript", src="/javascripts/lib/jquery.validation/1.14.0/messages_zh.js")
+    script(type="text/javascript").
+        $(function () {
+
+            $("#form-edit").validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    username: {
+                        required: true,
+                    },
+                    dept: {
+                        required: true,
+                    }
+                },
+                onkeyup: false,
+                focusCleanup: true,
+                success: "valid",
+                submitHandler: function (form) {
+                    //console.log("提交数据方法");
+                    $(form).ajaxSubmit();
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.location.reload()
+                    parent.layer.close(index);
+
+                }
+            });
+        });
+    // /请在上方写此页面业务相关的脚本

@@ -1,0 +1,26 @@
+h1,h2,h3,h4,p,ul,li,input,select{margin:0; padding:0; list-style:none; border:0; outline:none;border:none;}
+.ly-div15{ width:100%;overflow:hidden;}
+.ly-div15-1{ width:320px; height:450px; margin:15% auto 0;}
+.ly-div15-c{ margin-top:30px;  position: relative;}
+.ly-div15-c .eorr{ font-size:14px; color:#f0ad4e;margin-left: 15px;}
+.ly-div15-c input{ display:block;}
+.ly-div15-c .css_userName{overflow:hidden; width:272px; height:42px; margin-top:6px; background:url(../images/login/input01.png)  right no-repeat;; font-size:14px; padding-left:45px; color:#b1d7fd; line-height:42px;}
+.ly-div15-c .css_password{ width:272px; height:42px; background:url(../images/login/input02.png) no-repeat;font-size:14px; padding-left:45px; color:#b1d7fd; line-height:42px; position:absolute;top:78px;}
+.ly-div15-c .css_password2{ width:272px; height:42px; background:url(../images/login/input02.png) no-repeat;font-size:12px; padding-left:45px; color:#b1d7fd;line-height:42px; position:absolute;top:58px;}
+.ly-div15-c .btn{ width:318px; height:44px; background:url("../images/login/but.png"); margin-top:30px; font-size:24px; color:#ffffff;  cursor:pointer;position:absolute;top:105px;}
+.ly-div15-c .x-cmminilogin-userNamefocus{ background:url(../images/login/input03.png) right no-repeat; width:272px; height:42px;padding-left:45px;}
+.ly-div15-c .x-cmminilogin-password2focus{ background:url(../images/login/input04.png) right no-repeat; width:272px; height:42px;padding-left:45px}
+.ly-div15-c .btn:hover{ background:url(../images/login/but01.png) no-repeat;}
+.ly-div15-c .ace{ opacity:0;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);}
+.label_ace{  width:16px; height:16px;display:inline-block; float:left;cursor:pointer;
+    /*border:1px solid #ffffff; border-radius:4px; */
+    background:url(../images/login/laberBg.png) no-repeat;color:#ffffff; text-align:center; line-height:16px; font-size:12px; position:absolute;top:186px;}
+.ly-div15-c .lbl{ width:200px; height:23px;line-height:47px;font-size:14px; color:#b1d7fd;display:inline-block;float:left;margin-left:20px;position:absolute;top:170px;}
+/*_line-height:60px;*/
+.tipserror{
+    background: url(../images/login/ts.png)  no-repeat;
+    position: absolute;
+    margin-left: -17px;
+}
+input::-ms-clear{display : none; }
+input::-ms-reveal{display : none; }

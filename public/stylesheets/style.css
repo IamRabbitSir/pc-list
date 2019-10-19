@@ -1,0 +1,125 @@
+body{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  text-align:center;
+}
+.bg_con{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover; /* 兼容Webkit内核浏览器如Chrome和Safari */
+  -o-background-size: cover; /* 兼容Opera */
+  zoom: 1;
+}
+.div_con{
+  width: 260px;
+  height: 145px;
+  text-align:center;
+}
+.div_width0{
+  margin-top:100px;
+  width: 100%;
+  height: 500px;
+  background:white;
+  padding: 50px 0;
+}
+.div_in0{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+ .div_width1{
+   margin-top:0px;
+   width: 100%;
+   height: 500px;
+   background:#60d2d3;
+   padding: 50px 0;
+ }
+.div_in1{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.div_width2{
+  margin-top:0px;
+  width: 100%;
+  height: 1350px;
+  background:white;
+}
+.div_width3{
+  margin-top:0px;
+  width: 100%;
+  height: 500px;
+  background:#60d2d3;
+}
+.div_width4{
+  margin-top:0px;
+  width: 100%;
+  height: 130px;
+  background:#383838;
+}
+ul li{
+  margin:30px 0;
+  margin-right: 30px;
+  float: left;
+  list-style: none;
+  width: 340px;
+  height: 300px;
+}
+.a_one { text-decoration: none;color: #a6e1ec; }
+
+.title {font-weight: 800;font-size: 20px;text-transform: uppercase;padding: 15px 0;display: block;}
+
+table {background-color:white;width: 90%;text-align: center;border: 0;border-collapse: collapse;border-spacing: 0;}
+table td, table th {padding: 10px;margin: 0;}
+table thead {background-color: #333;color: #a6e1ec;font-weight: 800;font-size: 20px;}
+table tbody tr td{border-bottom: 2px solid #a6e1ec;font-size: 16px;}
+table tbody tr:hover td{background-color: #a6e1ec;color: #494A5F;}
+table img {max-width: 100px;}
+
+.btn {
+  text-align:center;
+  width: 146px;
+  margin: 20px;
+  font-weight: 100;
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  -ms-touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+.btn-repo {
+  border-color: black;
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #a6e1ec;
+}
+.btn-repo:focus,
+.btn-repo:active {
+  color: #333333;
+}
+.btn-repo:hover {
+  background-color: aliceblue;
+}
+.btn-repo:focus,
+.btn-repo:active {
+  background-color: transparent;
+}
+.btn-repo:hover,
+.btn-repo:active {
+  outline: none;
+}
